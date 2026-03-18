@@ -1,0 +1,8 @@
+<launch>
+    <node pkg="tf" type="static_transform_publisher" name="lidar_tf" args="0.05 0 0 0 0 3.14 base_link laser_frame 100" />
+
+    <node pkg="my_bot" type="esp32_driver.py" name="esp32_driver" output="screen" />
+
+    <node pkg="my_bot" type="udp_lidar.py" name="udp_lidar" output="screen" />
+
+    </launch>

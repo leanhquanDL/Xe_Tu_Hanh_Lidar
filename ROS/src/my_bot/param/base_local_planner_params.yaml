@@ -1,0 +1,28 @@
+TrajectoryPlannerROS:
+  # 1. TỐC ĐỘ
+  max_vel_x: 0.22
+  min_vel_x: 0.1
+  max_vel_theta: 0.5
+  min_vel_theta: -0.5
+
+  min_in_place_vel_theta: 1.0
+
+  # 2. GIA TỐC
+  acc_lim_theta: 1.5
+  acc_lim_x: 1.0
+  acc_lim_y: 0.0
+
+  # 3. ĐÍCH ĐẾN 
+  yaw_goal_tolerance: 3.14
+  xy_goal_tolerance: 0.10
+  latch_xy_goal_tolerance: true
+
+  # 4. KHÁC
+  sim_time: 1.7
+  meter_scoring: true
+  pdist_scale: 0.6
+  gdist_scale: 0.8
+  
+  occdist_scale: 0.02
+  heading_lookahead: 0.325
+  oscillation_reset_dist: 0.05
