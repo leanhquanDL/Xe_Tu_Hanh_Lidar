@@ -25,20 +25,29 @@ Bước 2: Khởi động Robot
 PHẦN 2: QUY TRÌNH VẼ BẢN ĐỒ (SLAM - MAPPING)
 
 Thực hiện bước này khi robot hoạt động ở môi trường mới chưa có bản đồ.
+
 Bước 1: Khởi động Driver Robot (Terminal 1). Mở Terminal trên Ubuntu, chạy lệnh kết nối với phần cứng:
 roslaunch my_bot run_robot.launch
+
 Bước 2: Kích hoạt thuật toán Gmapping (Terminal 2). Mở Terminal mới, chạy lệnh bắt đầu vẽ bản đồ:
 roslaunch my_bot my_gmapping.launch
+
 Bước 3: Mở giao diện quan sát Rviz (Terminal 3)
 rosrun rviz rviz
+
 •	Add Map (Topic: /map) và LaserScan (Topic: /scan) để thấy robot đang quét.
+
 Bước 4: Điều khiển Robot đi khám phá (Terminal 4). Sử dụng bàn phím để lái xe đi khắp phòng:
 rosrun teleop_twist_keyboard teleop_twist_keyboard.py
+
 •	Dùng các phím i (tiến), u (quay trái), o (quay phải), k (dừng), , (lùi).
+
 •	Lưu ý: Lái chậm để bản đồ được vẽ sắc nét, không bị nhòe.
 Bước 5: Lưu bản đồ (Terminal 5) Sau khi bản đồ trên Rviz đã hoàn thiện kín các bức tường, chạy lệnh:
 rosrun map_server map_saver -f my_house_map
+
 •	Kết quả: Tạo ra 2 file my_map.pgm (ảnh) và my_map.yaml (thông số) trong thư mục maps.
+
 •	Sau bước này: Tắt tất cả các Terminal (Ctrl + C).
 
 PHẦN 3: QUY TRÌNH DẪN ĐƯỜNG TỰ ĐỘNG (NAVIGATION)
@@ -69,14 +78,18 @@ Bước 2: Các thao tác điều khiển
 •	Chấm đỏ: Vị trí hiện tại của Robot.
 •	Mũi tên vàng: Hướng đầu xe robot đang quay.
 •	Nếu chấm đỏ nhảy loạn xạ lúc đầu: Hãy lái xe một đoạn ngắn để thuật toán AMCL hội tụ vị trí chính xác.
+
 2.	Thao tác Bản đồ:
 •	Zoom (Phóng to/nhỏ): Lăn con lăn chuột.
 •	Pan (Di chuyển map): Giữ chuột phải và kéo thả.
+
 3.	Ra lệnh di chuyển (Navigation):
+   
 •	Chọn đích: Bấm Chuột Trái vào bất kỳ điểm trắng nào trên bản đồ.
 •	Hiện tượng:
 o	Một biểu tượng Hồng tâm xanh lá xuất hiện tại điểm click.
 o	Robot bắt đầu tự động quay và di chuyển về phía mục tiêu.
 o	Trên màn hình Rviz sẽ thấy vạch xanh lá (Global Path) vạch ra đường đi.
 4.	Dừng khẩn cấp:
+
 •	Nếu xe gặp sự cố, hãy tắt nóng App Python hoặc chạy lệnh rostopic pub /cmd_vel ... gửi vận tốc 0 về ROS. (Hoặc đơn giản nhất là nhấc bổng xe lên/tắt công tắc nguồn xe).
